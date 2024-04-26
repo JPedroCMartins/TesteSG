@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super G Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo personalizado para o cabeçalho e barra lateral */
+        .header {
+            background-color: #f8f9fa;
+            /* Cor mais clara */
+            color: #333;
+            /* Cor do texto */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            /* Ajuste conforme necessário */
+            margin-right: 10px;
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            min-height: 100vh;
+        }
+
+        .sidebar-item {
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- Cabeçalho -->
+        <div class="row">
+            <div class="col">
+                <div class="header">
+                    <img src="logo_superg.jpg" alt="Logo Super G" class="logo">
+                    <h1>Super G</h1>
+                </div>
+            </div>
+        </div>
+        <!-- Conteúdo -->
+        <div class="row">
+            <!-- Barra lateral -->
+            <div class="col-md-3 sidebar">
+                <div id="accordion">
+                    <!-- Lista expansível 1 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne">
+                                    Atividades
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" onclick="showContent('Lista de Atividades')">Lista de Atividades</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lista expansível 2 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo">
+                                    Cadastros
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" onclick="showContent('Cliente')">Cliente</a></li>
+                                    <li><a href="#" onclick="showContent('Usuario')">Usuario</a></li>
+                                    <li><a href="#" onclick="showContent('Equipamentos')">Equipamentos</a></li>
+                                    <li><a href="#" onclick="showContent('Veiculos')">Veiculos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lista expansível 3 -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree">
+                                    Configurações
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" onclick="showContent('Empresas')">Empresas</a></li>
+                                    <li><a href="#" onclick="showContent('Perfis de acesso')">Perfis de acesso</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Conteúdo principal -->
+            <div class="col-md-9" id="mainContent">
+                <!-- Conteúdo principal aqui -->
+                <h2>Conteúdo Principal</h2>
+                <p>Este é o conteúdo principal da sua aplicação.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS e dependências -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showContent(content) {
+            if (content === 'Lista de Atividades') {
+                document.getElementById("mainContent").innerHTML = `
+                    <h2>ATIVIDADES</h2>
+                    <p>Listagem de atividades...</p>
+                    <input type="checkbox" checked>Mostrar inativos</input>
+                    <br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Fazer compras</td>
+                                <td>Em andamento</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Enviar relatório</td>
+                                <td>Pendente</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Reunião com cliente</td>
+                                <td>Concluído</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                document.getElementById("mainContent").innerHTML = `<h2>${content}</h2><p>Conteúdo relacionado a ${content}.</p>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
